@@ -1,5 +1,6 @@
 using eCommerce.Infrastructure;
 using eCommerce.Core;
+using eCommerce.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,9 @@ if (app.Environment.IsDevelopment())
 
 // Enforce HTTPS
 app.UseHttpsRedirection();
+
+// Global exception handling middleware
+app.UseExceptionHandlingMiddleware();
 
 // Routing
 app.UseRouting();
