@@ -3,9 +3,9 @@
 public record AuthenticationResponse
 (
     Guid UserId,
-    string? Email,  
+    string? Email,
     string? PersonName,
-    GenderOptions Gender,
+    string? Gender,
     string? Token,
     bool Success
 );

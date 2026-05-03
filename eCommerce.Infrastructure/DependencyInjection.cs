@@ -14,7 +14,7 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
         // TODO: Add services to the IoC container, such as database contexts, repositories, etc.
-        services.AddScoped<IUsersRepository, UsersRepository>();
+        services.AddSingleton<IUsersRepository, UsersRepository>();
         return services;
     }
 }
