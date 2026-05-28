@@ -52,4 +52,22 @@ public class AuthController : ControllerBase
 
         return Ok(authenticationResponse);
     }
+
+    [HttpGet("search/{userId}")]
+    public async Task<IActionResult> CheckUserExist(Guid userId)
+    {
+        if (userId == Guid.Empty)
+        {
+            return BadRequest("User ID cannot be empty.");
+        }
+
+        bool userExists = await _usersService.UserByIdExistsAsync(userId);
+
+        if (!userExists)
+        {
+            return NotFound("User not found.");
+        }
+
+        return Ok(userExists);
+    }
 }

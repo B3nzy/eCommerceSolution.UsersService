@@ -20,4 +20,10 @@ public interface IUsersRepository
     /// <param name="password"></param>
     /// <returns></returns>
     Task<ApplicationUser?> GetUserByEmailAndPassword(string? email, string? password);
+    /// <summary>
+    /// Method to retrieve a user from the database based on their unique identifier (UserId). It takes a userId as input and returns the corresponding ApplicationUser object if a match is found. If no match is found, it returns null.
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <returns></returns>
+    Task<ApplicationUser?> GetUserById(Guid? userId);
 }

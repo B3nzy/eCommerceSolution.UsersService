@@ -40,4 +40,16 @@ internal class UsersRepository : IUsersRepository
         }
         return applicationUserFromDB;
     }
+
+    public async Task<ApplicationUser?> GetUserById(Guid? userId) 
+    {
+        string query = "SELECT * FROM public.\"Users\" WHERE \"UserId\" = @UserId";
+        ApplicationUser? applicationUserFromDB = await _dbContext.DbConnection.QueryFirstOrDefaultAsync<ApplicationUser>(query, new { userId });
+
+        if (applicationUserFromDB == null)
+        {
+            return null;
+        }       
+        return applicationUserFromDB;
+    }
 }

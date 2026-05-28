@@ -39,4 +39,14 @@ internal class UsersService : IUsersService
         }
         return new AuthenticationResponse(registeredUser.UserId, registeredUser.Email, registeredUser.PersonName, registeredUser.Gender, "This is a dummy token", Success:true);
     }
+
+    public async Task<bool> UserByIdExistsAsync(Guid userId)
+    {
+        ApplicationUser? registeredUser = await _usersRepository.GetUserById(userId);
+        if (registeredUser == null)
+        {
+            return false;
+        }
+        return true;
+    }
 }

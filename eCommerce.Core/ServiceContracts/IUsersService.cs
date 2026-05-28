@@ -19,4 +19,10 @@ public interface IUsersService
     /// <param name="registerRequest"></param>
     /// <returns></returns>
     Task<AuthenticationResponse?> Register(RegisterRequest registerRequest);
+    /// <summary>
+    /// Method to check if a user exists in the system based on their unique identifier (userId). It takes a Guid representing the user's ID as input and returns a boolean value indicating whether a user with the specified ID exists in the system. This method can be used to validate user existence before performing operations that require a valid user, such as updating user information or assigning roles. If the user exists, it returns true; otherwise, it returns false.
+    /// </summary>
+    /// <param name="userId"></param>
+    /// <returns></returns>
+    Task<bool> UserByIdExistsAsync(Guid userId);
 }
